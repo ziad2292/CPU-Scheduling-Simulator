@@ -1,0 +1,21 @@
+FCAI Scheduler:
+FCAI Factor:
+depends on:
+- Priority (P)
+- Arrival time (AT)
+- Remaining brust time (RBT)
+
+FCAI Factor = (10−Priority) + (Arrival Time/V1) + (Remaining Burst Time/V2)
+- V1 = last arrival time of all processes/10
+- V2 = max burst time of all processes/10
+
+Quantum updates:
+- Q = Q + 2 (if process completes its quantum and still has remaining work)
+- Q = Q + unused quantum (if process is preempted)
+
+Steps:
+-> first calculate v1 = last arrival time, v2 = max burst time.
+-> Calculate the FCAI Factor for all processes.
+-> The process leaves the cpu when (Priority):
+    - another process with low FCAI Factor enters
+    - process finishes its quantum
